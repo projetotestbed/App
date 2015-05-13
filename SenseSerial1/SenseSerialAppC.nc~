@@ -10,7 +10,7 @@ implementation {
   components new AMSenderC(AM_SENSE_SERIAL_MSG);
   components ActiveMessageC;
   components new AMReceiverC(AM_SENSE_SERIAL_MSG);
-  components new PhotoC() as Sensor;
+  components new DemoSensorC();
 
   App.Boot -> MainC.Boot;
   App.Control -> AMSerial;
@@ -23,7 +23,7 @@ implementation {
   App.AMSendPacket -> AMSenderC;
   App.ControlPacket -> ActiveMessageC;
   App.ReceivePacket -> AMReceiverC;
-  App.Read -> Sensor;
+  App.Read -> DemoSensorC;
 }
 
 

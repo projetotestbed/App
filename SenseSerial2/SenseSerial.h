@@ -11,7 +11,7 @@ typedef nx_struct sense_serial_msg {
 
 enum {
   AM_SENSE_SERIAL_MSG = 0x89,
-  TIMER_PERIOD_MILLI = 50,
+  TIMER_PERIOD_MILLI = 250,
   PACKET_TO_ID = 1,
 };
 
