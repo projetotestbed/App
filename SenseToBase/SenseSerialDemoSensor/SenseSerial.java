@@ -15,7 +15,7 @@ public class SenseSerial implements MessageListener {
 
   public void messageReceived(int to, Message message) {
     SenseSerialMsg msg = (SenseSerialMsg)message;
-    System.out.println("Received packet: "+ msg.get_data() + " from: " + msg.get_OriId() + " sequence number: " + msg.get_counter());
+    System.out.println("Send packet: "+ msg.get_data() + " from: " + msg.get_OriId() + " sequence number: " + msg.get_counter());
   }
   
   private static void usage() {

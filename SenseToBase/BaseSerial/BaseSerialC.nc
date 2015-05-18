@@ -33,7 +33,7 @@ implementation {
   
   event message_t* ReceivePacket.receive(message_t* bufPtr, 
 				   void* payload, uint8_t len) {
-    call Leds.led1Toggle();
+    //call Leds.led1Toggle();
     if (len != sizeof(base_serial_msg_t)) {return bufPtr;}
     else {
 		
@@ -43,24 +43,23 @@ implementation {
 	      BufferData[contMsg]->data = rsm->data;
 	      BufferData[contMsg]->counter = rsm->counter;
 	      contMsg++;		
-	      call Leds.led0Toggle();
+	      //call Leds.led0Toggle();
 	      	
 	}
 	else{
              base_serial_msg_t* rcm = (base_serial_msg_t*)call Packet.getPayload(&packet, sizeof(base_serial_msg_t));
- call Leds.led2On();
-	     	     
-	media = 0;
+ 	     
+	     media = 0;
 	     counter++;
 	     for(i=0;i < contMsg;i++){
 		media += BufferData[i]->data/contMsg;
 	     }
-	     rcm->error = BufferData[9]->error;
+	     rcm->error = BufferData[LENGTH_BUFFER-1]->error;
 	     rcm->data = media;
              rcm->counter = counter;
  	     call AMSendSerial.send(AM_BROADCAST_ADDR, &packet, sizeof(base_serial_msg_t));    	
 	     contMsg = 0;	
-	     call Leds.led2Off();
+	     //call Leds.led2Off();
 	}
      }
       return bufPtr;
